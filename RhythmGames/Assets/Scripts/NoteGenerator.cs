@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteGenerator : MonoBehaviour {
-    // Start is called before the first frame update
     public string FilePath;
     public GameObject NomalNotes;
     public Transform FirstPos;
@@ -31,43 +30,71 @@ public class NoteGenerator : MonoBehaviour {
 
     string Title;
     float BPM;
+    //こいついる?
     List<GameObject> All_Notes;
+    
+    List<int> block = new List<int>(1024);
+    List<GameObject> noteName = new List<GameObject>(1024);
+    List<float> generatoTime = new List<float>(1024);
 
 
+    float starttime;
+    float now;
+    float duration;
+    float arrivalTime = 0.6f;
+    int count = 0;
     /*
     jsonファイルのロード
     Resourcess.Loadはファイルを文字列として読み込んでいる．
     JsonNodeは，よくわからん
     foreachは，リストの中身を一つずつ読み込む
     */
-    void loadjson() {
+    void LoadJson() {
         All_Notes = new List<GameObject>();
         string jsonText = Resources.Load<TextAsset>(FilePath).ToString();
         InputJson json = JsonUtility.FromJson<InputJson>(jsonText);
         Title = json.name;
         BPM = json.BPM;
         foreach(var note in json.notes) {
-
-            int block = note.block;
             float LPB = note.LPB;
             float num = note.num;
             int type  = note.type;
-            float generatoTime = num * ((60.0f / BPM) / LPB);
-            //Debug.Log(generatoTime);
-            //NotesDate A_notes = note.notes
-            GameObject Note;
-
+            int hoge = note.block;
+            generatoTime.Add(num * ((60.0f / BPM) / LPB));
+            block.Add(hoge);
+            
             if(type == 1 ) {
-                Note = Instantiate(NomalNotes,FirstPos.position,Quaternion.Euler(0,0,angle[block - 1 ]));
+                noteName.Add(NomalNotes);
             } else {
-                Note = Instantiate(NomalNotes,FirstPos.position, Quaternion.Euler(0,0,angle[block - 1 ]));
-                //Debug.Log("error");
+                noteName.Add(NomalNotes);
             }
-            Note.GetComponent<NomalNoteController>().setParameter(type,generatoTime,block);
-            All_Notes.Add(Note);
         }
     }
+    
+    
+    void CheckNextNotes(float _duration){
+        if (count < generatoTime.Count - 1.0f) {
+            if (_duration - generatoTime[count] + arrivalTime > 0) {
+                SpawnNotes(count);
+                count++;
+            }
+        }
+    }
+
+    void SpawnNotes(int i) {
+        GameObject Note;
+        Note = Instantiate(noteName[i],FirstPos.position,Quaternion.Euler(0,0,angle[block[i]]));
+        Note.GetComponent<NomalNoteController>().setParameter(block[i]);
+    }
+
     void Start() {
-        loadjson();
+        starttime = Time.time;
+        LoadJson();
+    }
+
+    void Update() {
+        now = Time.time;
+        duration = now - starttime;
+        CheckNextNotes(duration);
     }
 }
