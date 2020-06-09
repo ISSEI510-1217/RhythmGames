@@ -1,3 +1,15 @@
+Library
+Temp
+Build
+Obj
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
+*.swp
+*.csproj
+
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
