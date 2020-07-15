@@ -12,5 +12,4 @@ public class SongController : MonoBehaviour {
         Music.clip = (AudioClip)Resources.Load(ClipPath);
         Music.Play();
     }
-
 }

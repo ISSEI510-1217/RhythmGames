@@ -49,35 +49,35 @@ public class NoteGenerator : MonoBehaviour {
     JsonNodeは，よくわからん
     foreachは，リストの中身を一つずつ読み込む
     */
+    void hogehoge(NotesDate[] fuga)　{
+        foreach(var note in fuga) {
+            int type  = note.type;
+            generatoTime.Add(note.num * ((60.0f / BPM) / note.LPB));
+            block.Add(note.block);
+            hogehoge(note.notes);
+            if(type == 1 ) {
+                    noteName.Add(NomalNotes);
+            } else {
+                noteName.Add(NomalNotes);
+            }
+        }
+    }
+
     void LoadJson() {
         All_Notes = new List<GameObject>();
         string jsonText = Resources.Load<TextAsset>(FilePath).ToString();
         InputJson json = JsonUtility.FromJson<InputJson>(jsonText);
         Title = json.name;
         BPM = json.BPM;
-        foreach(var note in json.notes) {
-            float LPB = note.LPB;
-            float num = note.num;
-            int type  = note.type;
-            int hoge = note.block;
-            generatoTime.Add(num * ((60.0f / BPM) / LPB));
-            block.Add(hoge);
-            
-            if(type == 1 ) {
-                noteName.Add(NomalNotes);
-            } else {
-                noteName.Add(NomalNotes);
-            }
-        }
+        hogehoge(json.notes);
     }
     
     
     void CheckNextNotes(float _duration){
-        if (count < generatoTime.Count - 1.0f) {
-            if (_duration - generatoTime[count] + arrivalTime > 0) {
-                SpawnNotes(count);
-                count++;
-            }
+        while(_duration - generatoTime[count] + arrivalTime > 0 && count < generatoTime.Count - 1.0f){
+            SpawnNotes(count);
+            Debug.Log(generatoTime[count]);
+            count ++;
         }
     }
 
@@ -90,6 +90,8 @@ public class NoteGenerator : MonoBehaviour {
     void Start() {
         starttime = Time.time;
         LoadJson();
+        //CheckNextNotesでindexエラーが起きるから最後尾に大きい負の数を追加
+       generatoTime.Add(-111111);
     }
 
     void Update() {
