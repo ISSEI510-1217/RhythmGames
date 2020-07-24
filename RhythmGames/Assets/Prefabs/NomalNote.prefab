@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8560653143029215844}
   m_Layer: 0
   m_Name: NomalNote
-  m_TagString: Untagged
+  m_TagString: note
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

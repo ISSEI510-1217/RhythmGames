@@ -76,7 +76,7 @@ public class NoteGenerator : MonoBehaviour {
     void CheckNextNotes(float _duration){
         while(_duration - generatoTime[count] + arrivalTime > 0 && count < generatoTime.Count - 1.0f){
             SpawnNotes(count);
-            Debug.Log(generatoTime[count]);
+            //Debug.Log(generatoTime[count]);
             count ++;
         }
     }
@@ -84,7 +84,9 @@ public class NoteGenerator : MonoBehaviour {
     void SpawnNotes(int i) {
         GameObject Note;
         Note = Instantiate(noteName[i],FirstPos.position,Quaternion.Euler(0,0,angle[block[i]]));
+        Note.tag = block[i].ToString();
         Note.GetComponent<NomalNoteController>().setParameter(block[i]);
+        Note.GetComponent<NomalNoteController>().setParameterFloat(generatoTime[i]);
     }
 
     void Start() {
