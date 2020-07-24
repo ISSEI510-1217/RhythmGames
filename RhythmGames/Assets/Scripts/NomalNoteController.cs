@@ -15,6 +15,7 @@ public class NomalNoteController : MonoBehaviour {
     float now;
     float duration;
     float arrivalTime = 0.6f;
+    float generatoTime;
 
     float Vx;
     float Vy;
@@ -24,6 +25,15 @@ public class NomalNoteController : MonoBehaviour {
 
     public void setParameter(int block) {
         Block = block;
+    }
+
+    public void setParameterFloat(float generatoTime){
+        this.generatoTime = generatoTime;
+    }
+
+
+    public float getGeneratoTime(){
+        return generatoTime;
     }
     
     public int getBlock(){
