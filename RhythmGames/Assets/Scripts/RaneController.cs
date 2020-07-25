@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RaneController : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class RaneController : MonoBehaviour {
     private float starttime;
     float clicked_time;
     string blockName;
+
+    float diff;
 
     GameObject clickedGameObject;
     public GameObject[] noteObjects;
@@ -35,34 +38,44 @@ public class RaneController : MonoBehaviour {
             }
 
             //タグを使ってクリックしたノーツオブジェクトを取得する       
-            noteObjects = GameObject.FindGameObjectsWithTag(blockName);
+            try{
+                noteObjects = GameObject.FindGameObjectsWithTag(blockName);
 
-            //取得したノーツオブジェクトとタップしたオブジェクトとの距離が最短となるノーツを取得する
-            float tmpDis = 0;
-            float nearDis = 0;
-            GameObject nearObject = null;
+                //取得したノーツオブジェクトとタップしたオブジェクトとの距離が最短となるノーツを取得する
+                float tmpDis = 0;
+                float nearDis = 0;
+                GameObject nearObject = null;
 
-            foreach (GameObject i in noteObjects){
-                tmpDis = Vector3.Distance(clickedGameObject.transform.position, i.transform.position);
-                // Debug.Log(tmpDis);
-                if (nearDis == 0 || nearDis > tmpDis){
-                    nearDis = tmpDis;
-                    nearObject = i;
+                foreach (GameObject i in noteObjects){
+                    tmpDis = Vector3.Distance(clickedGameObject.transform.position, i.transform.position);
+                    // Debug.Log(tmpDis);
+                    if (nearDis == 0 || nearDis > tmpDis){
+                        nearDis = tmpDis;
+                        nearObject = i;
+                    }
                 }
-            }
-            
-            // クリックした時間とノーツの到着時間の差の絶対値を取る。
-            float diff = Mathf.Abs(clicked_time - nearObject.GetComponent<NomalNoteController>().getGeneratoTime());
+                
+                // クリックした時間とノーツの到着時間の差の絶対値を取る
+                try{
+                    Debug.Log(nearObject);
+                    diff = Mathf.Abs(clicked_time - nearObject.GetComponent<NomalNoteController>().getGeneratoTime());  
 
-            // 差の大きさによって判定を行う。
-            if (diff <= PERFECT){
-                Debug.Log("Perfect");
-                nearObject.SetActive(false);
-            } else if(diff <= GOOD){
-                Debug.Log("Good");
-                nearObject.SetActive(false);
-            } else{
-                Debug.Log("Miss");
+                    // 差の大きさによって判定を行う。
+                    if (diff <= PERFECT){
+                        Debug.Log("Perfect");
+                        nearObject.SetActive(false);
+                    } else if(diff <= GOOD){
+                        Debug.Log("Good");
+                        nearObject.SetActive(false);
+                    } else{
+                        Debug.Log("Miss");
+                    }       
+                }  catch(NullReferenceException e){
+                    Debug.LogWarning(e);
+                }
+                 
+            }catch(ArgumentException e){
+                Debug.LogWarning(e);
             }
         }
     }
