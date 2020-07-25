@@ -213,11 +213,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 14dde7ec74f354e20a3f0f83eb8229c6, type: 3}
+      objectReference: {fileID: 8300000, guid: 4a6382e794bf049aaa0c2e815a6bd583, type: 3}
     - target: {fileID: -8337729834512242488, guid: 7e23562d5e06449de93fde37d4535e7b,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8337729834512242488, guid: 7e23562d5e06449de93fde37d4535e7b,
+        type: 3}
+      propertyPath: Mute
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 710675348706712630, guid: 7e23562d5e06449de93fde37d4535e7b,
         type: 3}
@@ -277,7 +282,12 @@ PrefabInstance:
     - target: {fileID: 710675348706712631, guid: 7e23562d5e06449de93fde37d4535e7b,
         type: 3}
       propertyPath: ClipPath
-      value: Charts/12345/12345_music
+      value: Charts/ahurea/ahurea_music
+      objectReference: {fileID: 0}
+    - target: {fileID: 710675348706712631, guid: 7e23562d5e06449de93fde37d4535e7b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 710675348706712633, guid: 7e23562d5e06449de93fde37d4535e7b,
         type: 3}
@@ -315,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4558f4631ee5145d28a0e8e69fdd84b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FilePath: Charts/12345/12345
+  FilePath: Charts/ahurea/ahurea_score
   NomalNotes: {fileID: -8417410009141849754, guid: 416cf262f9c2c424ea0a055f133201f0,
     type: 3}
   FirstPos: {fileID: 6529212855078770710, guid: 6a6ee8c3678964e62bb5ca6df44efa00,
