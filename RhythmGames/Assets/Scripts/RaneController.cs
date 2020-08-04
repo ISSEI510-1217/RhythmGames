@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 
 public class RaneController : MonoBehaviour {
+    public AudioClip PerfectSound;
+    public AudioClip GoodSound;
+
+    AudioSource audioSource;
 
     float PERFECT = 0.05f;
     float GOOD = 0.15f;
@@ -20,6 +24,7 @@ public class RaneController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         starttime = Time.time;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -62,9 +67,11 @@ public class RaneController : MonoBehaviour {
 
                     // 差の大きさによって判定を行う。
                     if (diff <= PERFECT){
+                        audioSource.PlayOneShot(PerfectSound);
                         Debug.Log("Perfect");
                         nearObject.SetActive(false);
                     } else if(diff <= GOOD){
+                        audioSource.PlayOneShot(GoodSound);
                         Debug.Log("Good");
                         nearObject.SetActive(false);
                     } else{
