@@ -5,7 +5,7 @@ public class StartButtonScript : MonoBehaviour {
 
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("pineScene");
+        SceneManager.LoadScene("selectMusicScene");
     }
 
 }
