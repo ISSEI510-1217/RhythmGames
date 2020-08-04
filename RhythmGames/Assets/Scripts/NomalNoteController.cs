@@ -56,6 +56,9 @@ public class NomalNoteController : MonoBehaviour {
         duration = now - starttime;
         this.gameObject.transform.position = new Vector3(Vx * duration , Vy * duration,0);
         this.gameObject.transform.localScale = new Vector3(firstScale.x + ((scale.x/arrivalTime) * duration), firstScale.y + ((scale.x/arrivalTime) * duration), 1);
+        if (duration > 2.0f) {
+            Destroy(gameObject);
+        }
  
     }
 }

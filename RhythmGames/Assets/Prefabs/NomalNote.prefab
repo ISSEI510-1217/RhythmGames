@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: -8417410009141849754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.571429, y: -2.5714283, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38, y: 0.38, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 896b0564a41aa4448b2ed75303c16d8e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9d1ab83808c046229042d28644a1982, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.82, y: 0.79}
+  m_Size: {x: 5.39, y: 2.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,11 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanePos:
-  - {fileID: 3559111481362503757, guid: a702641276fdf4b18859ccb0aafc788e, type: 3}
-  - {fileID: 6952799341274496638, guid: ccb5ed7e451f84732a3ddcc18c0b0054, type: 3}
-  - {fileID: 8284615476983153145, guid: 8e144af3f6ce4485ba0f9736ef7b2876, type: 3}
-  - {fileID: 8236157492020935455, guid: 160b2049484da415e97730c20ecf09c1, type: 3}
-  - {fileID: 4941249009480368161, guid: 4ffe9d9e051a94559831786ae2445b89, type: 3}
-  - {fileID: 9198936181953275712, guid: 65a472705c16143d5817a86250d46eaa, type: 3}
-  - {fileID: 7941938577431108261, guid: bcced636a60b7478fa477bc3137b2f54, type: 3}
-  - {fileID: 372954355849955709, guid: 6dc80e68dd85d4659865ea8d6f1ed7e0, type: 3}
+  - {fileID: 4345635312488554129, guid: 72abfd5affaf74bb9862063bfb4e4274, type: 3}
+  - {fileID: 3065254067358191422, guid: 8233ec6b4e8e7491898db1aabb8589fe, type: 3}
+  - {fileID: 7389922978375590322, guid: f3547d4561a0f4d48a5956974dccd3cc, type: 3}
+  - {fileID: 783371605569563802, guid: 9f7915287af7d4d619537ddf967b3ef9, type: 3}
+  - {fileID: 3628658365081794442, guid: fdf52b70d96c747f3a205081e6128198, type: 3}
+  - {fileID: 2772089160738123950, guid: 053b42ce82f24425ea1d0e7864d31c9e, type: 3}
+  - {fileID: 3017286042374231024, guid: 4374b4bbabac64148af4a14f8ea1dd7a, type: 3}
+  - {fileID: 2027595272689608330, guid: 6405af752a0284ba4ab17dc7791611f1, type: 3}
