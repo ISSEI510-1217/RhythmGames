@@ -12,10 +12,6 @@ public class RaneController : MonoBehaviour {
     float PERFECT = 0.05f;
     float GOOD = 0.15f;
 
-    float Score;
-    float Combo;
-    //public Text ScoreText;
-
     private float starttime;
     float clicked_time;
     string blockName;
@@ -68,38 +64,19 @@ public class RaneController : MonoBehaviour {
                 try{
                     Debug.Log(nearObject);
                     diff = Mathf.Abs(clicked_time - nearObject.GetComponent<NomalNoteController>().getGeneratoTime());  
-                    float plusScore = 0;
-                    float comboCount = 0;
 
                     // 差の大きさによって判定を行う。
                     if (diff <= PERFECT){
                         audioSource.PlayOneShot(PerfectSound);
-                        plusScore = 300;
-                        comboCount = 1;
-                        FindObjectOfType<ScoreManager>().AddScore(300);
-                        FindObjectOfType<ScoreManager>().AddCombo(1);
                         Debug.Log("Perfect");
                         nearObject.SetActive(false);
                     } else if(diff <= GOOD){
                         audioSource.PlayOneShot(GoodSound);
-                        plusScore = 100;
-                        comboCount = 1;
-                        FindObjectOfType<ScoreManager>().AddScore(100);
-                        FindObjectOfType<ScoreManager>().AddCombo(1);
                         Debug.Log("Good");
                         nearObject.SetActive(false);
                     } else{
-                        plusScore = 0;
-                        comboCount = 0;
-                        FindObjectOfType<ScoreManager>().AddScore(0);
-                        FindObjectOfType<ScoreManager>().AddCombo(1);
                         Debug.Log("Miss");
-                    }   
-                    Score += plusScore;
-                    Combo += comboCount;
-                    Debug.Log(Score);
-                    Debug.Log(Combo);
-                    //ScoreText.text = Score.ToString();    
+                    }       
                 }  catch(NullReferenceException e){
                     Debug.LogWarning(e);
                 }
